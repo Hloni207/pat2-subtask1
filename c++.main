@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string message;
+    string finalMorse = "";
+
+    // 1. Ask the user to type in a message
+    cout << "Enter a short message in English: ";
+    getline(cin, message);
+
+    cout << endl << "--- Letter by Letter Translation ---" << endl;
+
+    // 2. Loop through each character of the string one by one
+    for (int i = 0; i < message.length(); i++) {
+        char letter = message[i];
+
+        // If the letter is lowercase, change it to uppercase
+        if (letter >= 'a' && letter <= 'z') {
+            letter = letter - 32; 
+        }
+
+        // Check each letter from A to Z using simple if-else statements
+        string code = "";
+        if (letter == 'A') code = ".-";
+        else if (letter == 'B') code = "-...";
+        else if (letter == 'C') code = "-.-.";
+        else if (letter == 'D') code = "-..";
+        else if (letter == 'E') code = ".";
+        else if (letter == 'F') code = "..-.";
+        else if (letter == 'G') code = "--.";
+        else if (letter == 'H') code = "....";
+        else if (letter == 'I') code = "..";
+        else if (letter == 'J') code = ".---";
+        else if (letter == 'K') code = "-.-";
+        else if (letter == 'L') code = ".-..";
+        else if (letter == 'M') code = "--";
+        else if (letter == 'N') code = "-.";
+        else if (letter == 'O') code = "---";
+        else if (letter == 'P') code = ".--.";
+        else if (letter == 'Q') code = "--.-";
+        else if (letter == 'R') code = ".-.";
+        else if (letter == 'S') code = "...";
+        else if (letter == 'T') code = "-";
+        else if (letter == 'U') code = "..-";
+        else if (letter == 'V') code = "...-";
+        else if (letter == 'W') code = ".--";
+        else if (letter == 'X') code = "-..-";
+        else if (letter == 'Y') code = "-.--";
+        else if (letter == 'Z') code = "--..";
+        
+        // If it was a valid letter, print it and add it to the final result
+        if (code != "") {
+            cout << letter << ": " << code << endl;
+            finalMorse = finalMorse + code + "   "; // Add 3 spaces after the code
+        }
+        // If it's a space between words, add a small gap to the final sentence
+        else if (letter == ' ') {
+            finalMorse = finalMorse + "  ";
+        }
+        // Symbols, numbers, and punctuation are ignored because code remains ""
+    }
+
+    // 3. Print out the whole translated sentence at the very end
+    cout << endl << "Full Morse code with spaces:" << endl;
+    cout << finalMorse << endl;
+
+    return 0;
+}
